@@ -74,11 +74,10 @@ function getWeather(response) {
 
 const API_KEY = "KZ9WN8L9BZBFBW4A76RPK4JX9";
 
-
 getWeatherButton.addEventListener("click", (e) => {
   e.preventDefault();
   const value = weatherInput.value;
-  getWeatherData(value)
+  getWeatherData(value);
   getGif(value);
   console.log(value);
 });
@@ -98,9 +97,13 @@ function getWeatherData(city = "Hyderabad") {
       console.log(response.currentConditions);
       getGif(response.address);
       getWeatherGif(response.currentConditions.conditions);
+    })
+    .catch(function (error) {
+      console.log(error);
     });
 }
 
+getWeatherData();
 
 function getDescription(response) {
   console.log("hello" + response.description);
